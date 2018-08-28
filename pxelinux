@@ -1,0 +1,269 @@
+DEFAULT RHEL-5.8-x86_64(kaitong)
+PROMPT 0
+MENU TITLE ||wuzhou Net-install||
+TIMEOUT 200
+TOTALTIMEOUT 6000
+ONTIMEOUT local
+
+LABEL local
+        MENU LABEL (local)
+        MENU DEFAULT
+        LOCALBOOT -1
+
+#LABEL DOS
+        KERNEL /images/DOS/memdisk
+#       MENU LABEL DOS
+        initrd /images/DOS/freedos.iso
+        APPEND iso
+LABEL oklin
+        MENU LABEL ^Oklin-x64
+        KERNEL /images/oklin/initrd-netboot.kernel
+        APPEND initrd=/images/oklin/initrd-netboot.gz ramdisk_size=1631232
+
+LABEL TestCD
+	KERNEL vmlinuz0
+	APPEND rootflags=loop initrd=initrd0.img xdriver=vesa nomodeset root=live:/TestCD.iso rootfstype=auto ro liveimg rd_NO_LUKS rd_NO_MD rd_NO_DM
+
+LABEL breakin
+        kernel /images/breakin/KERNEL
+        MENU LABEL breakin
+        append initrd=/images/breakin/INITRD.IMG startup=breakin vga=1
+        ipappend 2
+
+LABEL OE-VDI-V4.4.1-275-R2
+        kernel /images/OS-easy/vmlinuz
+        MENU LABEL OE-VDI-V4.4.1-275-R2
+        append initrd=/images/OS-easy/initrd.img ksdevice=bootif lang=  kssendmac net.ifnames=0 biosdevname=0  ks=http://192.168.100.254/cblr/ks_mirror/OE-VDI-V4.4.1-275-R2.cfg
+        ipappend 2
+
+LABEL vdi-server-4.6.0
+        kernel /images/vdi-server-4.6.0/vmlinuz
+        MENU LABEL vdi-server-4.6.0
+        append initrd=/images/vdi-server-4.6.0/initrd.img ksdevice=bootif lang=  kssendmac net.ifnames=0 biosdevname=0  ks=http://192.168.100.254/cblr/ks_mirror/vdi-server-4.6.0/ks-auto.cfg
+        ipappend 2
+
+LABEL vdi-client-4.4.3
+        kernel /images/vdi-client-4.4.3/vmlinuz
+        MENU LABEL vdi-client-4.4.3
+        append initrd=/images/vdi-client-4.4.3/initrd.img net.ifnames=0 biosdevname=0  ks=http://192.168.100.254/cblr/ks_mirror/vdi-client-4.4.3/anaconda-ks.cfg
+        ipappend 2
+
+
+
+LABEL CentOS-5.5-x86_64(zhongxing)
+
+LABEL CentOS-5.5-x86_64(zhongxing)
+       kernel /images/CentOS-5.5-zhongxing-x86_64/vmlinuz
+       MENU LABEL CentOS-5.5-x86_64(zhongxing)
+       append initrd=/images/CentOS-5.5-zhongxing-x86_64/initrd.img ksdevice=eth0 lang= kssendmac text ks=http://192.168.100.254/cobbler/ks_mirror/centos5.5-ks.cfg
+
+LABEL RHEL-5.5-i386(weian)
+        kernel /images/rhel-5.5-i386/vmlinuz
+        MENU LABEL RHEL-5.5-i386(weian)
+        append initrd=/images/rhel-5.5-i386/initrd.img ksdevice=bootif lang=  kssendmac text  ks=http://192.168.100.254/cobbler/ks_mirror/RHEL-5.5-i386(weian).cfg
+        ipappend 2
+LABEL RHEL-5.8-i386_ZX
+        kernel /images/rhel-5.8-i386/vmlinuz
+        MENU LABEL RHEL-5.8-i386_ZX
+        append initrd=/images/rhel-5.8-i386/initrd.img ksdevice=bootif lang=  kssendmac text  ks=http://192.168.100.254/cobbler/ks_mirror/rhel-5.8_i386_zx.cfg
+
+LABEL CentOS-5.8-x86_64
+        kernel /images/CentOS-5.8-x86_64/vmlinuz
+        MENU LABEL CentOS-5.8-x86_64
+        append initrd=/images/CentOS-5.8-x86_64/initrd.img ksdevice=bootif lang=  kssendmac text  ks=http://192.168.100.254/cobbler/ks_mirror/rhel-5.8-x86-64.cfg
+        ipappend 2
+
+LABEL RHEL-5.8-x86_64(hongxu)
+        kernel /images/RHEL-5.8-hongxu-x86_64/vmlinuz
+        MENU LABEL RHEL-5.8-x86_64(hongxu)
+        append initrd=/images/RHEL-5.8-hongxu-x86_64/initrd.img ksdevice=bootif lang=  kssendmac text  ks=http://192.168.100.254/cobbler/ks_mirror/hongxu.ks
+        ipappend 2
+
+LABEL RHEL-5.8-x86_64(kaitong)
+        kernel /images/RHEL-5.8-hongxu-x86_64/vmlinuz
+        MENU LABEL RHEL-5.8-x86_64(kaitong)
+        append initrd=/images/RHEL-5.8-hongxu-x86_64/initrd.img ksdevice=bootif lang=  kssendmac text  ks=http://192.168.100.254/cobbler/ks_mirror/RHEL-5.8-x86_64(kaitong).cfg
+	ipappend 2
+
+LABEL RHEL-6.5-i386(haoyun)
+        kernel /images/rhel-6.5-i386/vmlinuz
+        MENU LABEL RHEL-6.5-i386(haoyun)
+        append initrd=/images/rhel-6.5-i386/initrd.img xdriver=vesa nomodeset ksdevice=bootif lang=  kssendmac text  ks=http://192.168.100.254/cobbler/ks_mirror/rhel-server-6.5-i386-haoyun.cfg
+	 ipappend 2
+
+#LABEL RHEL-6.7-i386(haoyun)
+#        kernel /images/rhel-6.7-i386/vmlinuz
+#       MENU LABEL RHEL-6.7-i386(haoyun)
+#        append initrd=/images/rhel-6.7-i386/initrd.img ksdevice=bootif lang=  kssendmac text  ks=http://192.168.100.254/#cobbler/ks_mirror/rhel-server-6.7-i386_haoyun.cfg
+#	 ipappend 2
+
+LABEL CentOS-5.8-ruian-x86_64
+        kernel /images/CentOS-5.8-ruian-x86_64/vmlinuz
+        MENU LABEL CentOS-5.8-ruian-x86_64
+        append initrd=/images/CentOS-5.8-ruian-x86_64/initrd.img ksdevice=bootif lang=  kssendmac text  ks=http://192.168.100.254/cobbler/ks_mirror/centos-5.8-x64-ruian.cfg
+        ipappend 2
+
+LABEL CentOS-5.9-x86_64
+        kernel /images/CentOS-5.9-x86_64/vmlinuz
+        MENU LABEL CentOS-5.9-x86_64
+        append initrd=/images/CentOS-5.9-x86_64/initrd.img ksdevice=bootif lang=  kssendmac text  ks=http://192.168.100.254/cobbler/ks_mirror/rhel-5.9-x86-64.cfg
+        ipappend 2
+
+LABEL CentOS-6.0-x86_64(zhongxing)
+        kernel /images/CentOS-6.0-zhongxing-x86_64/vmlinuz
+        MENU LABEL CentOS-6.0-x86_64(zhongxing)
+        append initrd=/images/CentOS-6.0-zhongxing-x86_64/initrd.img ksdevice=bootif lang=  kssendmac text  ks=http://192.168.100.254/cobbler/ks_mirror/CentOS-6.0-zhongxing-x86_64.cfg
+        ipappend 2
+
+ABEL CentOS-6.2-zhongxing-x86_64
+        kernel /images/CentOS-6.2-bin-DVD1-x86_64/vmlinuz
+        MENU LABEL CentOS-6.2-zhongxing-x86_64
+        append initrd=/images/CentOS-6.2-bin-DVD1-x86_64/initrd.img ksdevice=bootif lang=  kssendmac text  ks=http://192.168.100.254/cobbler/ks_mirror/CentOS-6.2-zhongxing-x86_64.cfg
+        ipappend 2
+
+LABEL CentOS-6.4-zhongxing-x86_64
+        kernel /images/CentOS-6.4-zhongxing-x86_64/vmlinuz
+        MENU LABEL CentOS-6.4-zhongxing-x86_64
+        append initrd=/images/CentOS-6.4-zhongxing-x86_64/initrd.img ksdevice=bootif lang=  kssendmac text  ks=http://192.168.100.254/cobbler/ks_mirror/CentOS-6.4-zhongxing-x86_64.cfg
+        ipappend 2
+
+LABEL CentOS-6.5-zhongxing-x86_64
+        kernel /images/CentOS-6.5-x86_64/vmlinuz
+        MENU LABEL CentOS-6.5-zhongxing-x86_64
+        append initrd=/images/CentOS-6.5-x86_64/initrd.img ksdevice=bootif lang=  kssendmac text  ks=http://192.168.100.254/cblr/ks_mirror/CentOS-6.5-zhongxing-x86_64.cfg
+        ipappend 2
+LABEL CentOS-6.5-zhongxing-x86_64(manual)
+        kernel /images/CentOS-6.5-x86_64/vmlinuz
+        MENU LABEL CentOS-6.5-ZX-Manual-x86_64
+        append initrd=/images/CentOS-6.5-x86_64/initrd.img ksdevice=bootif lang=  kssendmac  ks=http://192.168.100.254/cblr/ks_mirror/CentOS-6.5-zx-manual-x86_64.cfg
+        ipappend 2
+
+LABEL CentOS-6.5-x86_64(guangtong)
+        kernel /images/guangtong/vmlinuz
+        MENU LABEL guangtong
+        append initrd=/images/guangtong/initrd.img ksdevice=bootif lang=  kssendmac text  ks=http://192.168.100.254/cblr/ks_mirror/sam_2disk.cfg
+        ipappend 2
+
+LABEL SynitalentOS_4.0.0-5005-x86_64
+        kernel /images/SynitalentOS/vmlinuz
+        MENU LABEL SynitalentOS_4.0.0-5005-x86_64
+        append initrd=/images/SynitalentOS/initrd.img ksdevice=bootif lang=  kssendmac text  ks=http://192.168.100.254/cblr/ks_mirror/SynitalentOS_4.0.0-5005-x86_64.cfg net.ifnames=0 biosdevname=0
+
+        ipappend 2
+
+LABEL CentOS-6.5-x86_64(everything)
+        kernel /images/CentOS-6.5-x86_64/vmlinuz
+        MENU LABEL CentOS-6.5-x86_64(everything)
+        append initrd=/images/CentOS-6.5-x86_64/initrd.img ksdevice=bootif lang=  kssendmac  ks=http://192.168.100.254/cblr/ks_mirror/CentOS6.5-everything-x86_64.cfg
+        ipappend 2
+
+LABEL CentOS-6.6-zhongxing-x86_64
+        kernel /images/CentOS-6.6-x86_64/vmlinuz
+	MENU LABEL CentOS-6.6-zhongxing-x86_64
+        append initrd=/images/CentOS-6.6-x86_64/initrd.img ksdevice=bootif lang=  kssendmac text  ks=http://192.168.100.254/cblr/ks_mirror/CentOS-6.6-zhongxing-x86_64.cfg
+        ipappend 2
+
+LABEL CentOS-6.7-zhongxing-x86_64
+        kernel /images/CentOS-6.7-x86_64/vmlinuz
+	MENU LABEL CentOS-6.7-zhongxing-x86_64
+        append initrd=/images/CentOS-6.7-x86_64/initrd.img ksdevice=bootif lang=  kssendmac text  ks=http://192.168.100.254/cblr/ks_mirror/CentOS-6.7-zhongxing-x86_64.cfg
+        ipappend 2
+LABEL CentOS-6.7-zhongxing-x86_64
+        kernel /images/CentOS-6.7-x86_64/vmlinuz
+	MENU LABEL CentOS-6.7-zhongxing-x86_64(manual)
+        append initrd=/images/CentOS-6.7-x86_64/initrd.img ksdevice=bootif lang=  kssendmac   ks=http://192.168.100.254/cblr/ks_mirror/CentOS-6.7-zx-manual-x86_64.cfg
+        ipappend 2
+
+
+LABEL CentOS-6.7-x86_64_ZT
+        kernel /images/CentOS-6.7-x86_64_zt/vmlinuz
+        MENU LABEL CentOS-6.7-x86_64_ZT
+        append initrd=/images/CentOS-6.7-x86_64_zt/initrd.img ksdevice=bootif lang=  kssendmac  ks=http://192.168.100.254/cobbler/ks_mirror/CentOS-6.7-x86_64_zt.cfg
+        ipappend 2
+
+
+
+LABEL CentOS-7.0-x86_64(zhongxing)
+        kernel /images/Centos-7.0-x86_64/vmlinuz
+        MENU LABEL CentOS-7.0-x86_64(zhongxing)
+        append initrd=/images/Centos-7.0-x86_64/initrd.img ksdevice=bootif lang=  kssendmac text  ks=http://192.168.100.254/cblr/ks_mirror/CentOS-7.0-zhongxing-x86_64.cfg
+        ipappend 2
+
+LABEL RHEL-6.1-i386(haowei)
+        kernel /images/RHEL-6.1-i386/vmlinuz
+        MENU LABEL RHEL-6.1-i386(haowei)
+        append initrd=/images/RHEL-6.1-i386/initrd.img ksdevice=bootif lang=  kssendmac text  ks=http://192.168.100.254/cobbler/ks_mirror/haowei.cfg
+	 ipappend 2
+
+LABEL RHEL-6.2-x86_64-everything
+        kernel /images/rhel-server-6.2-x86_64/vmlinuz
+        MENU LABEL RHEL-6.2-x86_64-everything
+        append initrd=/images/rhel-server-6.2-x86_64/initrd.img ksdevice=bootif lang=  kssendmac text  ks=http://192.168.100.254/cobbler/ks_mirror/rhel-server-6.2-x86_64_full.cfg
+        ipappend 2
+
+
+LABEL RHEL-6.4-x86_64-Packages_Hongxu
+        kernel /images/rhel-server-6.4-x86_64/vmlinuz
+        MENU LABEL RHEL-6.4-x86_64-Package_Hongxu
+        append initrd=/images/rhel-server-6.4-x86_64/initrd.img ksdevice=bootif lang=  kssendmac text  ks=http://192.168.100.254/cobbler/ks_mirror/rhel-6.4-x86_64-package-hongxu.cfg
+        ipappend 2
+
+LABEL RHEL-6.4-x86_64-everything
+        kernel /images/rhel-server-6.4-x86_64/vmlinuz
+        MENU LABEL RHEL-6.4-x86_64-everything
+        append initrd=/images/rhel-server-6.4-x86_64/initrd.img ksdevice=bootif lang=  kssendmac text  ks=http://192.168.100.254/cobbler/ks_mirror/rhel-6.4-x86_64-everything.cfg
+        ipappend 2
+
+LABEL RHEL-6.5-x86_64_ZX
+        kernel /images/rhel-server-6.5-x86_64/vmlinuz
+        MENU LABEL RHEL-6.5-x86_64-ZX
+        append initrd=/images/rhel-server-6.5-x86_64/initrd.img ksdevice=bootif lang=  kssendmac  ks=http://192.168.100.254/cobbler/ks_mirror/rhel-6.5-x86_64.cfg
+        ipappend 2
+
+
+LABEL RHEL-6.5-x86_64-Full_manual
+        kernel /images/rhel-server-6.5-x86_64/vmlinuz
+        MENU LABEL RHEL-6.5-x86_64-Full_manual
+        append initrd=/images/rhel-server-6.5-x86_64/initrd.img ksdevice=bootif lang=  kssendmac   ks=http://192.168.100.254/cobbler/ks_mirror/rhel-6.5-x86_64-Full_manual.cfg
+        ipappend 2
+
+LABEL SUSE_SLES-11-SP1-x86_64
+        kernel /images/SUSE_SLES-11-SP1-x86_64/linux
+        MENU LABEL SUSE_SLES-11-SP1-x86_64
+        append initrd=/images/SUSE_SLES-11-SP1-x86_64/initrd ksdevice=bootif lang=  install=http://192.168.100.254/cblr/links/SUSE_SLES-11-SP1-x86_64 text  autoyast=http://192.168.100.254/cblr/svc/op/ks/profile/SUSE_SLES-11-SP1-x86_64
+        ipappend 2
+
+LABEL SUSE_SLES-11-SP2-x86_64
+        kernel /images/SUSE_SLES-11-SP2-x86_64/linux
+        MENU LABEL SUSE_SLES-11-SP2-x86_64
+        append initrd=/images/SUSE_SLES-11-SP2-x86_64/initrd ksdevice=bootif lang=  install=http://192.168.100.254/cblr/links/SUSE_SLES-11-SP2-x86_64 text  autoyast=http://192.168.100.254/cblr/svc/op/ks/profile/SUSE_SLES-11-SP2-x86_64
+        ipappend 2
+
+LABEL ubuntu12.04-x86_64
+        kernel /images/ubuntu12.04-x86_64/linux
+        MENU LABEL ubuntu12.04-x86_64
+        append initrd=/images/ubuntu12.04-x86_64/initrd.gz ksdevice=bootif lang=  text  auto-install/enable=true priority=critical url=http://192.168.100.254/cblr/svc/op/ks/profile/ubuntu12.04-x86_64 hostname=ubuntu12.04-x8664 domain=local.lan suite=precise
+        ipappend 2
+
+LABEL ubuntu13.04-x86_64
+        kernel /images/ubuntu13.04-x86_64/linux
+        MENU LABEL ubuntu13.04-x86_64
+        append initrd=/images/ubuntu13.04-x86_64/initrd.gz ksdevice=bootif lang=  text  auto-install/enable=true priority=critical url=http://192.168.100.254/cblr/svc/op/ks/profile/ubuntu13.04-x86_64 hostname=ubuntu13.04-x8664 domain=local.lan suite=raring
+        ipappend 2
+
+LABEL HPC
+	MENU LABEL HPC
+	KERNEL menu.c32
+	APPEND pxelinux.cfg/HPC.cfg
+
+MENU end
+
+LABEL Clonezilla
+MENU LABEL Clonezilla
+  kernel /images/clonezilla/vmlinuz
+  append initrd=/images/clonezilla/initrd.img boot=live union=overlay username=user config components quiet noswap edd=on nomodeset locales= keyboard-layouts= ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch="no" vga=788 ip= net.ifnames=0  nosplash i915.blacklist=yes radeonhd.blacklist=yes nouveau.blacklist=yes vmwgfx.enable_fbdev=1 fetch=tftp://192.168.100.254/images/clonezilla/filesystem.squashfs
+MENU end
+
+#LABEL HPL_64bit_OS7
+#	KERNEL /HPL_64bit_CentOS7/vmlinuz0
+#	APPEND rootflags=loop initrd=/HPL_64bit_CentOS7/initrd0.img xdriver=vesa nomodeset root=live:/HPL_64bit_OS7.iso #rootfstype=auto ro rd.live.image rd.luks=0 rd.md=0 rd.dm=0
