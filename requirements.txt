@@ -13,7 +13,7 @@ click==6.7
 constantly==15.1.0
 cryptography==2.2.2
 cssselect==1.0.3
-Django==2.0.7
+Django==2.2.10
 django-mail-queue==3.1.4
 djangorestframework==3.8.2
 dwebsocket==0.4.2
