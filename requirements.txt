@@ -15,7 +15,7 @@ cryptography==2.2.2
 cssselect==1.0.3
 Django==2.0.7
 django-mail-queue==3.1.4
-djangorestframework==3.8.2
+djangorestframework==3.11.2
 dwebsocket==0.4.2
 get==1.0.3
 hiredis==0.2.0
